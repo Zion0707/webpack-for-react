@@ -1,7 +1,6 @@
 import '_less/index';
 
-const add = (x, y) => {
-    return x + y;
-};
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-console.log(add(22, 30));
+ReactDOM.render(<div>React</div>, document.getElementById('root'));

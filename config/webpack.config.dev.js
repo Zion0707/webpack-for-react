@@ -28,6 +28,11 @@ module.exports = {
                 test: /\.(less|css)$/,
                 use: ['style-loader', 'css-loader', 'less-loader'],
             },
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+            },
         ],
     },
 
@@ -45,6 +50,7 @@ module.exports = {
         // 打包html模板
         new HtmlWebpackPlugin({
             template: resolve(__dirname, '../src/index.html'),
+            favicon: resolve(__dirname, '../src/statics/imgs/favicon.ico'),
         }),
     ],
 
