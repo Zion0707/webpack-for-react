@@ -7,6 +7,7 @@ const baseConfig = require('./webpack.config.base.js');
 rmDir(resolve(__dirname, '../dist'), function () {});
 
 module.exports = {
+    // 输出打包文件
     output: {
         path: resolve(__dirname, '../dist'),
         filename: '[name].[chunkhash:8].js',
