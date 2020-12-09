@@ -1,3 +1,5 @@
+import '_less/index';
+
 const add = (x, y) => {
     return x + y;
 };
