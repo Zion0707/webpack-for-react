@@ -7,7 +7,6 @@ module.exports = {
     output: {
         path: resolve(__dirname, '../dist'),
         filename: '[name].js?=' + Date.parse(new Date()),
-        publicPath: './', //或cdn地址 https://cdn.example.com/
     },
     module: {
         rules: [],
@@ -17,7 +16,7 @@ module.exports = {
         proxy: {
             '/api': 'http://localhost:7001',
         },
-        contentBase: join(__dirname, 'dist'),
+        contentBase: join(__dirname, '../dist'),
         host: '0.0.0.0',
         port: 8086,
     },

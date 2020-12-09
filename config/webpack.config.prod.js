@@ -7,7 +7,7 @@ module.exports = {
     output: {
         path: resolve(__dirname, '../dist'),
         filename: '[name][chunkhash:8].js',
-        publicPath: './', //或cdn地址 https://cdn.example.com/
+        publicPath: './', // 或cdn地址 https://cdn.example.com/
     },
     module: {
         rules: [],
