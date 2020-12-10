@@ -15,7 +15,6 @@ ReactDOM.render(
             <Link to="/list">
                 <button>列表</button>
             </Link>
-
             <Route path="/" exact component={Home} />
             <Route path="/list" component={List} />
         </Router>

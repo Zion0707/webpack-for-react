@@ -50,6 +50,7 @@ module.exports = {
         alias: {
             _less: resolve(__dirname, '../src/less'),
             _pages: resolve(__dirname, '../src/pages'),
+            _statics: resolve(__dirname, '../src/statics'),
         },
     },
 };
