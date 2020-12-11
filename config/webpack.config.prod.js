@@ -1,10 +1,6 @@
 // 生产配置
 const { resolve } = require('path');
-const { rmDir } = require('./webpack.config.utils.js');
 const baseConfig = require('./webpack.config.base.js');
-
-// 清空dist的旧文件
-rmDir(resolve(__dirname, '../dist'), function () {});
 
 module.exports = {
     // 输出打包文件

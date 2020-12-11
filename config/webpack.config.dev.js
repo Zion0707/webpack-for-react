@@ -1,5 +1,5 @@
 // 开发配置
-const { resolve, join } = require('path');
+const { join } = require('path');
 const baseConfig = require('./webpack.config.base.js');
 
 module.exports = {
