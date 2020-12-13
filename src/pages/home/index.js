@@ -7,7 +7,7 @@ const Home = () => {
     useEffect(() => {}, []);
     return (
         <div className="home">
-            home
+            <h4>home</h4>
             <Button>按钮</Button>
             <img src={photos} width="100px" alt="图片" />
         </div>

@@ -5,9 +5,14 @@ const baseConfig = require('./webpack.config.base.js');
 module.exports = {
     // 设置测试服务器
     devServer: {
+        // 找到打包文件文件
         contentBase: join(__dirname, '../dist'),
+        // 开启热更新
         hot: true,
-        historyApiFallback: true, //防止react路由刷新后，找不到资源
+        //防止react路由刷新后，找不到资源
+        historyApiFallback: true,
+        // 一切服务都启用gzip 压缩
+        compress: true,
         proxy: {
             '/api': 'http://localhost:7001',
         },
