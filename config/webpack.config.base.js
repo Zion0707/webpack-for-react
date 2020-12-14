@@ -9,6 +9,12 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 // 查看打包文件大小
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// 复制指定文件到某个位置
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+// 这里引入webpack主要是为了启用 HMR
+const webpack = require('webpack');
+
+const ENV = process.env.NODE_ENV;
 
 module.exports = {
     entry: resolve(__dirname, '../src/index.js'),
@@ -48,9 +54,8 @@ module.exports = {
             {
                 test: /\.(less|css)$/,
                 use: [
-                    // 'style-loader',
-                    // 提取js中的css成单独文件
-                    MiniCssExtractPlugin.loader,
+                    // MiniCssExtractPlugin.loader 是为了提取 提取js中的css成单独文件
+                    ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
                     'css-loader',
                     'less-loader',
                 ],
@@ -75,11 +80,19 @@ module.exports = {
             template: resolve(__dirname, '../src/index.html'),
             favicon: resolve(__dirname, '../src/statics/icons/favicon.ico'),
         }),
-        // 打包css
         new MiniCssExtractPlugin({
             filename: 'css/[chunkhash:8].css',
         }),
         new OptimizeCssAssetsWebpackPlugin(),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: resolve(__dirname, '../src/login.html'),
+                    to: resolve(__dirname, '../dist'),
+                },
+            ],
+        }),
+        new webpack.HotModuleReplacementPlugin(),
     ],
 
     resolve: {

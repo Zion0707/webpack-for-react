@@ -22,6 +22,9 @@ module.exports = {
 
     mode: 'development',
 
+    // 开启 source-map 调试模式
+    devtool: 'source-map',
+
     // 引用公共部分
     ...baseConfig,
 };
