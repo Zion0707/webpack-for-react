@@ -19,4 +19,12 @@ export const routers = [
             loading: Loading,
         }),
     },
+    {
+        path: '*',
+        name: '404',
+        component: Loadable({
+            loader: () => import('_pages/not-found/index'),
+            loading: Loading,
+        }),
+    },
 ];

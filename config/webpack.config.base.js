@@ -65,6 +65,7 @@ module.exports = {
             _statics: resolve(__dirname, '../src/statics'),
             _pages: resolve(__dirname, '../src/pages'),
             _components: resolve(__dirname, '../src/components'),
+            _store: resolve(__dirname, '../src/store'),
         },
     },
 };
