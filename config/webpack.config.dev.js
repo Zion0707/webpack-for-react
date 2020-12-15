@@ -1,8 +1,25 @@
 // 开发配置
 const { join } = require('path');
 const baseConfig = require('./webpack.config.base.js');
+const { merge } = require('webpack-merge');
+const webpack = require('webpack');
 
-module.exports = {
+const devConfig = {
+    module: {
+        rules: [
+            // 处理样式资源
+            {
+                test: /\.(less|css)$/,
+                use: ['style-loader', 'css-loader', 'less-loader'],
+            },
+        ],
+    },
+
+    plugins: [
+        // 启用 HMR 热加载，记得把devServer中的hot属性设为true
+        new webpack.HotModuleReplacementPlugin(),
+    ],
+
     // 设置测试服务器
     devServer: {
         // 找到打包文件文件
@@ -13,6 +30,7 @@ module.exports = {
         historyApiFallback: true,
         // 一切服务都启用gzip 压缩
         compress: true,
+        // 设置代理服务器
         proxy: {
             '/api': 'http://localhost:7001',
         },
@@ -21,12 +39,9 @@ module.exports = {
     },
 
     mode: 'development',
-
-    // 开启 source-map 调试模式
-    devtool: 'source-map',
-
-    // 引用公共部分
-    ...baseConfig,
 };
+
+// 合并配置对象
+module.exports = merge(baseConfig, devConfig);
 
 console.log('--------------测试开发环境----------------');

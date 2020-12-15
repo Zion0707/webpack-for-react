@@ -1,23 +1,13 @@
 // 公共配置
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// 清除打包旧文件
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-// 开启css从js抽离，避免js加载css导致闪屏问题
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// css 文件压缩
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
-// 查看打包文件大小
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-// 复制指定文件到某个位置
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-// 这里引入webpack主要是为了启用 HMR
-const webpack = require('webpack');
-
-const ENV = process.env.NODE_ENV;
 
 module.exports = {
     entry: resolve(__dirname, '../src/index.js'),
+
+    // 开启 source-map 模式
+    devtool: 'source-map',
 
     module: {
         rules: [
@@ -50,16 +40,6 @@ module.exports = {
                     },
                 ],
             },
-            // 处理样式资源
-            {
-                test: /\.(less|css)$/,
-                use: [
-                    // MiniCssExtractPlugin.loader 是为了提取 提取js中的css成单独文件
-                    ENV === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'less-loader',
-                ],
-            },
             // 处理其他资源，排除以下资源的文件就是其他资源了
             {
                 exclude: /\.(html|js|jsx|gif|png|jpg|jpeg|svg|less|css)/,
@@ -69,30 +49,13 @@ module.exports = {
     },
 
     plugins: [
-        // // 查看打包大小
-        // new BundleAnalyzerPlugin({
-        //     analyzerPort: 3001,
-        // }),
-        // 清除已打包的生产文件
-        new CleanWebpackPlugin(),
-        // 打包html模板
+        // 设置html模板
         new HtmlWebpackPlugin({
             template: resolve(__dirname, '../src/index.html'),
             favicon: resolve(__dirname, '../src/statics/icons/favicon.ico'),
         }),
-        new MiniCssExtractPlugin({
-            filename: 'css/[chunkhash:8].css',
-        }),
+        // css 文件压缩
         new OptimizeCssAssetsWebpackPlugin(),
-        new CopyWebpackPlugin({
-            patterns: [
-                {
-                    from: resolve(__dirname, '../src/login.html'),
-                    to: resolve(__dirname, '../dist'),
-                },
-            ],
-        }),
-        new webpack.HotModuleReplacementPlugin(),
     ],
 
     resolve: {
