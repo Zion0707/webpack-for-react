@@ -1,7 +1,6 @@
 // 公共配置
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
     entry: resolve(__dirname, '../src/index.js'),
@@ -54,8 +53,6 @@ module.exports = {
             template: resolve(__dirname, '../src/index.html'),
             favicon: resolve(__dirname, '../src/statics/icons/favicon.ico'),
         }),
-        // css 文件压缩
-        new OptimizeCssAssetsWebpackPlugin(),
     ],
 
     resolve: {

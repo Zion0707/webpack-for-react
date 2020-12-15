@@ -5,6 +5,7 @@ const { merge } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const prodConfig = {
@@ -46,6 +47,9 @@ const prodConfig = {
         new MiniCssExtractPlugin({
             filename: 'css/[chunkhash:8].css',
         }),
+        // css 文件压缩
+        new OptimizeCssAssetsWebpackPlugin(),
+
         // 查看打包文件大小
         // new BundleAnalyzerPlugin({
         //     //  端口查看
