@@ -5,6 +5,9 @@ const { merge } = require('webpack-merge');
 const webpack = require('webpack');
 
 const devConfig = {
+    // 开启 source-map 调试模式
+    devtool: 'source-map',
+
     module: {
         rules: [
             // 处理样式资源
@@ -35,7 +38,7 @@ const devConfig = {
             '/api': 'http://localhost:7001',
         },
         host: '0.0.0.0',
-        port: 8086,
+        port: 3001,
     },
 
     mode: 'development',

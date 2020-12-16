@@ -5,9 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: resolve(__dirname, '../src/index.js'),
 
-    // 开启 source-map 模式
-    devtool: 'source-map',
-
     module: {
         rules: [
             {
