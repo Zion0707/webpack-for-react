@@ -1,11 +1,11 @@
 // 生产配置
 const { resolve } = require('path');
-const baseConfig = require('./webpack.config.base.js');
 const { merge } = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const baseConfig = require('./webpack.config.base.js');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const prodConfig = {
@@ -34,15 +34,15 @@ const prodConfig = {
     plugins: [
         // 清除已打包的生产文件
         new CleanWebpackPlugin(),
-        // 复制指定文件到某个位置
-        new CopyWebpackPlugin({
-            patterns: [
-                {
-                    from: resolve(__dirname, '../src/login.html'),
-                    to: resolve(__dirname, '../dist'),
-                },
-            ],
-        }),
+        // // 复制指定文件到某个位置
+        // new CopyWebpackPlugin({
+        //     patterns: [
+        //         {
+        //             from: resolve(__dirname, '../src/login.html'),
+        //             to: resolve(__dirname, '../dist'),
+        //         },
+        //     ],
+        // }),
         // 开启css从js抽离，避免js加载css导致闪屏问题
         new MiniCssExtractPlugin({
             filename: 'css/[chunkhash:8].css',
@@ -62,5 +62,3 @@ const prodConfig = {
 
 // 合并配置对象
 module.exports = merge(baseConfig, prodConfig);
-
-console.log('--------------生产打包环境----------------');

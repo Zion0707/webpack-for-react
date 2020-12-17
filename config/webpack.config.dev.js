@@ -1,8 +1,8 @@
 // 开发配置
 const { join } = require('path');
-const baseConfig = require('./webpack.config.base.js');
 const { merge } = require('webpack-merge');
 const webpack = require('webpack');
+const baseConfig = require('./webpack.config.base.js');
 
 const devConfig = {
     // 开启 source-map 调试模式
@@ -29,7 +29,7 @@ const devConfig = {
         contentBase: join(__dirname, '../dist'),
         // 开启热更新
         hot: true,
-        //防止react路由刷新后，找不到资源
+        // 防止react路由刷新后，找不到资源
         historyApiFallback: true,
         // 一切服务都启用gzip 压缩
         compress: true,
@@ -46,5 +46,3 @@ const devConfig = {
 
 // 合并配置对象
 module.exports = merge(baseConfig, devConfig);
-
-console.log('--------------测试开发环境----------------');

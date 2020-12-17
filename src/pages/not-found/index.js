@@ -2,18 +2,16 @@ import React from 'react';
 import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 
-const NotFound = () => {
-    return (
-        <div>
-            404页面
-            <br />
-            <Link to="/">
-                <Button type="primary" size="small">
-                    回到首页
-                </Button>
-            </Link>
-        </div>
-    );
-};
+const NotFound = () => (
+    <div>
+        404页面
+        <br />
+        <Link to="/">
+            <Button type="primary" size="small">
+                回到首页
+            </Button>
+        </Link>
+    </div>
+);
 
 export default NotFound;
