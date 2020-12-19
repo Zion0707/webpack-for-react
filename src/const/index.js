@@ -12,7 +12,7 @@ export const routers = [
         }),
     },
     {
-        path: '/list',
+        path: '/list/list',
         name: '列表',
         component: Loadable({
             loader: () => import('_pages/list/index'),

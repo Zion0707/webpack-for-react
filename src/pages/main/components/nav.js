@@ -10,7 +10,7 @@ const Nav = () => {
                 </Link>
             </li>
             <li>
-                <Link to="/list">列表</Link>
+                <Link to="/list/list">列表</Link>
             </li>
             <li>
                 <Link to="/bbbb">404页面</Link>
