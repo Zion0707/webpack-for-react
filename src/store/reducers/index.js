@@ -1,3 +1,5 @@
+// reducers 文件夹主要存放数据
+
 import { combineReducers } from 'redux';
 import { SET_ITEM_NAME, SET_ITEM_LIST } from '_store/constants/index';
 
@@ -6,7 +8,7 @@ const initalState = {
     list: [],
 };
 
-function getItem(state = initalState, action) {
+function getGlobalData(state = initalState, action) {
     switch (action.type) {
         case SET_ITEM_NAME:
             return {
@@ -23,4 +25,4 @@ function getItem(state = initalState, action) {
     }
 }
 
-export default combineReducers({ getItem });
+export default combineReducers({ getGlobalData });

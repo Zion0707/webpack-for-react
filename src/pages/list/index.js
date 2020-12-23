@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'antd';
 import { connect } from 'react-redux';
-import { setItemList } from '_store/actions/index';
+import { setGlobalList } from '_store/actions/index';
 import '_less/list/index';
 
 const List = (props) => {
@@ -13,7 +13,7 @@ const List = (props) => {
         list.push({
             time: Date.parse(new Date()),
         });
-        props.setItemList({
+        props.setGlobalList({
             list,
         });
     };
@@ -25,14 +25,14 @@ const List = (props) => {
             {`redux-data: ${JSON.stringify(itemData)}`}
             <br />
             <br />
-            <Button onClick={changeList}>setItemList</Button>
+            <Button onClick={changeList}>setGlobalList</Button>
         </div>
     );
 };
 
 // 把store功能注入到props中
 const mapToProps = {
-    setItemList,
+    setGlobalList,
 };
 
-export default connect((state) => ({ itemData: state.getItem }), mapToProps)(List);
+export default connect((state) => ({ itemData: state.getGlobalData }), mapToProps)(List);
