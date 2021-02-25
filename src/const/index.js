@@ -20,6 +20,14 @@ export const routers = [
         }),
     },
     {
+        path: '/model3d',
+        name: '3d模型',
+        component: Loadable({
+            loader: () => import('_pages/model3d/index'),
+            loading: Loading,
+        }),
+    },
+    {
         path: '*',
         name: '404',
         component: Loadable({

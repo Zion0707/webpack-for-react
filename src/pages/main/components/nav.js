@@ -10,6 +10,9 @@ const Nav = () => {
                 </Link>
             </li>
             <li>
+                <Link to="/model3d">3d模型</Link>
+            </li>
+            <li>
                 <Link to="/list/list">列表</Link>
             </li>
             <li>
