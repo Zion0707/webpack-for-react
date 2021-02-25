@@ -41,6 +41,10 @@ const devConfig = {
         // 设置代理服务器
         proxy: {
             '/api': 'http://localhost:7001',
+            '/test': {
+                target: 'https://oyoozo.oss-cn-shenzhen.aliyuncs.com',
+                changeOrigin: true,
+            },
         },
         host: '0.0.0.0',
         port: 3001,

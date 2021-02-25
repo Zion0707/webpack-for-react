@@ -30,8 +30,8 @@ const Model3d = () => {
 
     const modelLoad = () => {
         const el = content3dRef.current;
-        const winWidth = 400;
-        const winHeight = 400;
+        const winWidth = 300;
+        const winHeight = 300;
         el.style.cssText = `width:${winWidth}px;height:${winHeight}px`;
 
         // 相机
@@ -44,8 +44,8 @@ const Model3d = () => {
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 
         // 设置渲染器的颜色和大小
-        // renderer.setClearColor('#040b1a');
-        renderer.setClearAlpha(0);
+        renderer.setClearColor('#000');
+        // renderer.setClearAlpha(0);
         renderer.setSize(winWidth, winHeight);
         renderer.setPixelRatio(window.devicePixelRatio); // 高清设置
 
@@ -66,20 +66,24 @@ const Model3d = () => {
         const scene = new THREE.Scene();
 
         // ------------------------------------------- 3d模型搭建 ---------------------------------------------
-        var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        // 导入obj模型
+        const objLoader = new OBJLoader();
+        objLoader.load('/test/pikaqiu/file.obj', (object) => {
+            // 设置模型缩放比例
+            object.scale.set(1, 1, 1);
+            // 设置模型的坐标
+            object.position.set(0, 0, 0);
 
-        const geometry = new THREE.BoxBufferGeometry(10, 10, 10);
-        const logoTexture = new THREE.TextureLoader().load(pkqjpg);
-        logoTexture.repeat.set(1, 1);
-        logoTexture.wrapS = THREE.RepeatWrapping;
-        logoTexture.wrapT = THREE.RepeatWrapping;
-        const logoMaterial = new THREE.MeshLambertMaterial({
-            map: logoTexture,
-            transparent: true,
-            opacity: 1,
+            object.traverse((child) => {
+                if (child instanceof THREE.Mesh) {
+                    console.log(child.material);
+                    // 设置模型皮肤
+                    child.material.map = new THREE.TextureLoader().load('/test/pikaqiu/file.jpg');
+                }
+            });
+            // 将模型添加到场景中
+            scene.add(object);
         });
-        const cube = new THREE.Mesh(geometry, logoMaterial);
-        scene.add(cube);
 
         // ------------------------------------------- 3d模型搭建 ---------------------------------------------
 
