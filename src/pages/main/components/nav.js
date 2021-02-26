@@ -1,23 +1,19 @@
 import React from 'react';
 import { NavLink as Link } from 'react-router-dom';
+import { routers } from '_const';
 
 const Nav = () => {
     return (
         <ul className="nav-list">
-            <li>
-                <Link to="/" exact>
-                    首页
-                </Link>
-            </li>
-            <li>
-                <Link to="/model3d">3d模型</Link>
-            </li>
-            <li>
-                <Link to="/list/list">列表</Link>
-            </li>
-            <li>
-                <Link to="/bbbb">404页面</Link>
-            </li>
+            {routers.map((item) => {
+                return (
+                    <li>
+                        <Link to={item.path} exact>
+                            {item.name}
+                        </Link>
+                    </li>
+                );
+            })}
         </ul>
     );
 };

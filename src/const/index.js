@@ -20,10 +20,10 @@ export const routers = [
         }),
     },
     {
-        path: '/model3d',
+        path: '/model3d-cdn',
         name: '3d模型',
         component: Loadable({
-            loader: () => import('_pages/model3d/index'),
+            loader: () => import('_pages/model3d-cdn/index'),
             loading: Loading,
         }),
     },
