@@ -85,6 +85,21 @@ const Model3d = () => {
             scene.add(object);
         });
 
+        const loader1 = new THREE.FontLoader();
+        loader1.load('/test/pikaqiu/font.json', function (font) {
+            console.log(font);
+            const g = new THREE.TextGeometry('threejs', {
+                // 设定文字字体，
+                font: font,
+                size: 10,
+                height: 5,
+            }); //计算边界，暂时不用管
+            g.computeBoundingBox(); //3D文字材质
+            const m = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+            const mesh = new THREE.Mesh(g, m); // 加入到场景中
+            scene.add(mesh);
+        });
+
         // ------------------------------------------- 3d模型搭建 ---------------------------------------------
 
         // 设置光源

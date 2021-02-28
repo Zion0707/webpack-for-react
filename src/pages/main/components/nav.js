@@ -7,7 +7,7 @@ const Nav = () => {
         <ul className="nav-list">
             {routers.map((item) => {
                 return (
-                    <li>
+                    <li key={item.path}>
                         <Link to={item.path} exact>
                             {item.name}
                         </Link>
